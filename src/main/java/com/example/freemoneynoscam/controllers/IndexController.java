@@ -21,6 +21,21 @@ public class IndexController {
         return "index";
     }
 
+    @GetMapping("/success")
+    public String success() {
+        return "success";
+    }
+
+    @GetMapping("/fail")
+    public String fail() {
+        return "fail";
+    }
+
+    @GetMapping("/error")
+    public String error() {
+        return "error";
+    }
+
     @PostMapping("/")
     public String postContact(@RequestParam MultiValueMap body) {
         database.setConnection();
@@ -45,15 +60,15 @@ public class IndexController {
 
         // Handle redirect
         if (result == "fail") {
-            return "fail";
+            return "redirect:/fail";
         }
 
         if (result == "success") {
-            return "success";
+            return "redirect:/success";
         }
 
         if (result == "error") {
-            return "error";
+            return "redirect:/error";
         }
 
         return "index";
