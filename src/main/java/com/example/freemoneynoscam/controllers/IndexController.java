@@ -28,6 +28,8 @@ public class IndexController {
         String result = "fail";
 
         String input = String.valueOf(body.get("email"));
+        input.replace("[","");
+        input.replace("]","");
         System.out.println(input);
 
         // Validate email

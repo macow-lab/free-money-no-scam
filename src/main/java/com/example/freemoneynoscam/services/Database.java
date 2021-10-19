@@ -21,10 +21,11 @@ public class Database {
 
     public int saveEmail(String email) {
         String insstr = "INSERT INTO email(email) values (?)";
+        String input = email;
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(insstr);
-            preparedStatement.setString(1, email);
+            preparedStatement.setString(1, input.replace("[","").replace("]",""));
             preparedStatement.executeUpdate();
         } catch (SQLException err) {
             System.out.println("bad happened:" + err.getMessage());
